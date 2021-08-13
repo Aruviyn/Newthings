@@ -43,6 +43,12 @@ The sum of 5 and 11 is 16
 - Lastly, to display system information, type: screenfetch
 ##
 ## Nodejs.
+- Node js is commonly used for non-blocking, event-driven servers, because of its single-threaded nature. mainly used on traditional web sites and back-end API.
+
 ##
 ## Atom ide.
+- Atom ide is free open source and source code editor that can be used on different operating system. It is also supported for plug-ins that is written in JavaScript, embedded Git Control developed by GitHub. It is a desktop application built using web technologies.
 
+##
+## Docker.
+- Docker is an open platform for developing, shipping, and running application. It enables separation of applications from infrastructures. 
