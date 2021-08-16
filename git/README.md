@@ -11,7 +11,6 @@ Here are some lovely git commands:
 | --- | --- | --- |
 | `git clone <url>` | clone a repository into local | |
 | `git branch` | Allows creating, listing, renaming, or deleting branch | |
-| `ctrl + shift + p`| Opens command palette and install packages and themes| Allows preview to be shown on the side |
 | `git run` | Execute a command manually by typng it *without* the git part. ex. `fetch --all` | |
 | `git status` | show current status | |
 | `git add` | Add the current file to the index | |
