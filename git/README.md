@@ -5,14 +5,7 @@
 
 ## Commands
 
-Here are some lovely git commands:
-
-| commands | description | remark |
-| --- | --- | --- |
-| `git cherry-pick <hash>` | This command is to choose a commit from one branch and apply it onto another. This way you can still keep track of the origin of the commit and may avoid merge conflicts in the future. | tell us what cherry pick does and why dont we just copy paste contents |
-| `git diff` | This command displays the differences between files in two commits or between a commit and your current repository. It is used when you want to compare two different commits with each other or two files. | when does these diffs get handy, maybe you want to look into generating patches |
-| `git checkout` | This command is used to switch the branches. Even after creating new branch, you are still in the master branch. | |
-
+Here are some git commands and their application
 
 ---
 
@@ -37,6 +30,48 @@ Being a distributed version control system, one may host the repository at many 
 | `git remote add <new-remote>` | add a new remote called new-remote |
 | `git remote -v` | shows if there are more than one remote defined for the repository |
 | `git fetch <remote>` | fetches changes coming from remotes |
+
+---
+
+### git workflow
+
+Checking status is important especially when we had spent time working on another stuff and we want to return to previous work in progress. Below is the git workflow if I had changed some file and how do I proceed with that
+
+```bash
+~/checkouts/Newthings >>> git status                                                                                                                                                                              
+On branch issue-3
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   git/README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+git status tells us which branch we are on and what are the status of the files being on the said branch.
+
+In the sample output above it says that I have modified file git/README.md
+
+I am going to add git/README.md file to be part of my next commit
+
+```bash
+~/checkouts/Newthings >>> git add git/README.md                                                              
+```
+With that I am ready to introduce the next commit. Therefore I issue git commit command with putting my git commit message in-line using -m switch
+
+```bash                                                                                                    
+~/checkouts/Newthings >>> git commit -m "issue-3 descriptive git commands and samples"                                                                                                                            
+[issue-3 976b4ff] issue-3 descriptive git commands and samples
+ 1 file changed, 201 insertions(+), 25 deletions(-)
+ rewrite git/README.md (64%)
+```
+Upon committing, the insertion and deletion has been recorded as part of the git log.
+
+```bash
+~/checkouts/Newthings >>> git status                                                                                                                                                                              
+On branch issue-3
+nothing to commit, working tree clean
+```
+With that, there are no more pending changes. The branch is clean from any modifications
 
 ---
 
@@ -156,7 +191,10 @@ In some cases, developers make branch to test out experimental work without dama
 
 Checking what has been changed is crucial. `git diff` gets the job done. Git diff format is similar to any patch format. An output of a git diff can be generated into patches portable to patch any version. Think of it as porting over cherry picks without the hashes but with patch files.
 
+Here is a sample of git diff:
+
 ```bash
+~/checkouts/Newthings >>> git diff
 
 diff --git a/git/README.md b/git/README.md
 index f95df6e..627faae 100644
