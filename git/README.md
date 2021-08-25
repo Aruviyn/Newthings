@@ -5,14 +5,7 @@
 
 ## Commands
 
-Here are some lovely git commands:
-
-| commands | description | remark |
-| --- | --- | --- |
-| `git cherry-pick <hash>` | This command is to choose a commit from one branch and apply it onto another. This way you can still keep track of the origin of the commit and may avoid merge conflicts in the future. | tell us what cherry pick does and why dont we just copy paste contents |
-| `git diff` | This command displays the differences between files in two commits or between a commit and your current repository. It is used when you want to compare two different commits with each other or two files. | when does these diffs get handy, maybe you want to look into generating patches |
-| `git checkout` | This command is used to switch the branches. Even after creating new branch, you are still in the master branch. | |
-
+Here are some git commands with their sample use:
 
 ---
 
