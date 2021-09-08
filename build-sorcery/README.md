@@ -410,8 +410,124 @@ When we execute Maven build commands, Maven starts looking for dependency librar
 | Step 3 | If a remote repository has not been mentioned, Maven simply stops the processing and throws error (Unable to find dependency) |
 | Step 4 | Search dependency in remote repository or repositories, if found then it is downloaded to local repository for future reference. Otherwise, Maven stops processing and throws error (Unable to find dependency) |
 
+
 ## Node Package Manager (NPM)
+NPM, Inc. is a company founded in 2014, and was acquired by GitHub in 2020. npm is a critical part of the JavaScript community and helps support one of the largest developer ecosystems in the world.
+
+The command line tool `npm` is a package management solution for Javascript-based development. It is used to create and use node packaged modules and is built into the Javascript platform [Node.js](https://nodejs.org/en/)
+
+Let's dive more into NPM.
+
+
+### NPM Repository
+NXRM supports the npm registry format for proxy repositories. This allows us to take advantage of the packages in the npm registry and other public registries without incurring repeated downloads of packages, since they will be proxied in the repository manager.
+
+Creating and managing repositories is an essential part of your Nexus Repository Manager configuration, since it allows you to expose more components to your users. It supports proxy repositories, hosted repositories and repository groups using a number of different repository formats.
+
+The binary parts of a repository are stored in blob stores
+A default blob store that is based on a file system storage within the `$data-dir` is automatically configured.
+
+
+#### Blob Stores
+A blob store is the internal storage mechanism for the binary parts of components and their assets. 
+They can be local file system or cloud-based using Amazon S3 (Pro and OSS) or Microsoft Azure (Pro only). 
+Each blob store can be used by one or multiple repositories and repository groups.
+
+There are two things to know about NPM repository.
+1. It is an online repository for the publishing of open-source Node.js projects.
+2. It is a command-line utility for interacting with said repository that aids in package installation, version management, and dependency management.
 [NPM repository](https://www.npmjs.com/) where you can find all sorts of fun node modules to incorporate into your nodejs projects.
+
+There are three types of registries on NPM.
+
+
+#### Proxying NPM Registries.
+This is a repository that is linked to a remote repository. 
+Any request for a component is verified against the local content of the proxy repository. 
+
+If no local component is found, the request is forwarded to the remote repository. 
+
+The component is then retrieved and stored locally in the repository manager, which acts as a cache. 
+Subsequent requests for the same component are then fulfilled from the local storage, therefore eliminating the network bandwidth and time overhead of retrieving the component from the remote repository again.
+
+There are few default npm access registry:
+
+1.  By default npm accesses https://registry.npmjs.org registry directly. 
+    This is to reduce duplicate downloads and improve download speeds for your developers and CI servers.
+    To proxy an external npm registry, you simply create a new npm (proxy) as documented in Repository Management.
+    Here is how: 
+    - Define Name  
+    - Define URL for the remote storage
+    - Select Blob store for storage. 
+
+2.  **maven-central**
+    This proxy repository accesses the [Central Repository](https://search.maven.org/), formerly known as Maven Central. It is the default component repository built into Apache Maven and is well-supported by other build tools like Gradle, SBT or Ant/Ivy.
+    
+3.  **nuget.org-proxy**
+    This proxy repository accesses the [NuGet Gallery](https://www.nuget.org/). 
+    It is the default component repository used by the `nuget` package management tool used for .Net development.
+    
+
+#### Private NPM Registries.
+A private npm registry can be used to upload your own packages as well as third-party packages. 
+We can create a private npm registry by setting up a hosted repository with the npm format in the repository manager. 
+It is good practice to create two separate hosted repositories for these purposes.
+A hosted repository, is a repository that stores components in the repository manager as the authoritative location for these components.
+
+To create a hosted repository with npm format, simply create a new npm (hosted):
+- Define Name
+- Select Blob store for storage
+
+By default, the repository manager ships with the following configured hosted repositories:
+1.  **maven-releases**
+    This hosted repository uses the *maven2* repository format with a *release* version policy. 
+    It is intended to be the repository where your organization publishes internal releases. 
+    You can also use this repository for third-party components that are not available in external repositories and can therefore not be retrieved via a configured proxy repository.
+    
+2.  **maven-snapshots**
+    This hosted repository also uses the *maven2* repository format but, with a *snapshot* version policy. 
+    It is intended to be the repository where your organization publishes internal development versions, also known as snapshots.
+    
+3.  **nuget-hosted**
+    This hosted repository is where your organization can publish internal releases in repository using the *nuget* repository format. 
+    You can also use this repository for third-party components that are not available in external repositories, that could potentially be proxied to gain access to the components.
+    
+
+#### Grouping npm Registries
+A repository with the type group, also known as repository group, represents a powerful feature of Nexus Repository Manager. 
+They allow you to combine multiple repositories and other repository groups in a single repository. 
+This in turn means that your users can rely on a single URL for their configuration needs, while the administrators can add more repositories and therefore components to the repository group.
+
+To create a new repository group: 
+-   Define Name
+-   Select Blob store for storage
+-   Add npm repositories to the Members list in the desired order
+
+The repository manager ships with the following groups:
+1.  **maven-public**
+    The maven-public group is a repository group of maven2 formatted repositories and combines the important external proxy repository for the Central Repository with the hosted repositories maven-releases and maven-snapshots. 
+    This allows you to expose the components of the Central Repository as well as your internal components in one single, simple-to-use repository and therefore URL.
+    
+2.  **nuget-group**
+    This group combines the nuget formatted repositories nuget-hosted and nuget.org-proxy into a single repository for your .Net development with NuGet.
+
+### Package.Json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Gradle
 More and more people are switching to Gradle. It is written in groovy (an evolution of java programming language). Written to be the ultimate build mechanism for many popular programming language.
