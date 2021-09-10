@@ -460,13 +460,6 @@ There are few default npm access registry:
     - Define URL for the remote storage
     - Select Blob store for storage. 
 
-2.  **maven-central**
-    This proxy repository accesses the [Central Repository](https://search.maven.org/), formerly known as Maven Central. It is the default component repository built into Apache Maven and is well-supported by other build tools like Gradle, SBT or Ant/Ivy.
-    
-3.  **nuget.org-proxy**
-    This proxy repository accesses the [NuGet Gallery](https://www.nuget.org/). 
-    It is the default component repository used by the `nuget` package management tool used for .Net development.
-    
 
 #### Private NPM Registries.
 A private npm registry can be used to upload your own packages as well as third-party packages. 
@@ -478,20 +471,6 @@ To create a hosted repository with npm format, simply create a new npm (hosted):
 - Define Name
 - Select Blob store for storage
 
-By default, the repository manager ships with the following configured hosted repositories:
-1.  **maven-releases**
-    This hosted repository uses the *maven2* repository format with a *release* version policy. 
-    It is intended to be the repository where your organization publishes internal releases. 
-    You can also use this repository for third-party components that are not available in external repositories and can therefore not be retrieved via a configured proxy repository.
-    
-2.  **maven-snapshots**
-    This hosted repository also uses the *maven2* repository format but, with a *snapshot* version policy. 
-    It is intended to be the repository where your organization publishes internal development versions, also known as snapshots.
-    
-3.  **nuget-hosted**
-    This hosted repository is where your organization can publish internal releases in repository using the *nuget* repository format. 
-    You can also use this repository for third-party components that are not available in external repositories, that could potentially be proxied to gain access to the components.
-    
 
 #### Grouping npm Registries
 A repository with the type group, also known as repository group, represents a powerful feature of Nexus Repository Manager. 
@@ -503,31 +482,199 @@ To create a new repository group:
 -   Select Blob store for storage
 -   Add npm repositories to the Members list in the desired order
 
-The repository manager ships with the following groups:
-1.  **maven-public**
-    The maven-public group is a repository group of maven2 formatted repositories and combines the important external proxy repository for the Central Repository with the hosted repositories maven-releases and maven-snapshots. 
-    This allows you to expose the components of the Central Repository as well as your internal components in one single, simple-to-use repository and therefore URL.
-    
-2.  **nuget-group**
-    This group combines the nuget formatted repositories nuget-hosted and nuget.org-proxy into a single repository for your .Net development with NuGet.
 
 ### Package.Json
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Gradle
-More and more people are switching to Gradle. It is written in groovy (an evolution of java programming language). Written to be the ultimate build mechanism for many popular programming language.
+Gradle is a build system (open source) which is used to automate building, testing, deployment etc.
+The process becomes more consistent with the help of build automation tools.
+The building process includes compiling, linking, and packaging the code. 
+It builds up on ANT, Maven and lvy repositories and supports groovy based Domain Specific Language (DSL) over the XML.
+
+Every Android project needs a gradle for generating an apk from the .java and .xml files in the project. 
+Simply put, a gradle takes all the source files (java and XML) and apply appropriate tools.
+For example, it converts the java files into dex files and compresses all of them into a single file known as apk that is actually used.
+
+Now you have a rough idea about gradle, lets look into it deeper.
+
+[Reference](https://www.geeksforgeeks.org/android-build-gradle/)
+
+### How does gradle works?
+Gradle builds are used to define a project and its tasks. 
+At least one Gradle build file is located in the root folder of the project. 
+A task represents the work that a Gradle build has to perform, for example, compiling the source code of the program. 
+You can execute multiple tasks at a time under one build file. 
+These tasks can be dynamically created and extended at runtime.
+
+
+### Why do people use gradle?
+Below are the reasons why people use gradle:
+- Gradle resolves all the issues faced on other build tools like Maven and ANT.
+- The tool focuses on maintainability, usability, extendibility, performance, and flexibility. 
+- Gradle is popular to provide high-speed performance, nearly twice as fast as Maven. It is well-known to be highly customizable when it comes to different projects dealing with various technologies. We may use Gradle in several ways, like Java projects, Android projects, and Groovy projects.
+- The tools support a wide variety of IDE's, which provide a better user experience, as different people prefer working on a different IDE. It provides the users that like to work on the terminal with the command-line interface, which offers features like Gradle tasks, Command line completion, etc.
+
+[Reference](https://www.simplilearn.com/tutorials/gradle-tutorial/what-is-gradle#why_is_gradle_used)
+
+
+### How gradle solve the problem of maven and ant
+One of the reason why people use gradle is because it resolves all the issues on other build tools such as Maven and Ant, but **HOW?***
+From the discussion on top, we know that Ant and Maven shared considerable success in the JAVA marketplace.
+However, Both Ant and Maven has their drawbacks:
+| Tool | Drawbacks |
+| --- | --- |
+| Ant |  XML is used as a format to write the build scripts. Being hierarchical is not good for procedural programming. XML is relatively unmanageable |
+| Maven | It does not handle the conflicts between versions of the same library. Complex customised build scripts are difficult to write in Maven, as compared to writing the build scripts in **ANT** | 
+
+
+Gradle then came in with efficient features from both tools: 
+| Features | Description | 
+| --- | --- |
+| Declarative builds and build-by-convention | Gradle is available with separate Domain Specific Language (DSL) based on Groovy language. It provides the declarative language elements. Those elements also provide build-by-convention support for Java, Groovy, OSGI, Web and Scala. |
+| Language for dependency based programming | The declarative language lies on a top of a general purpose task graph, which can be fully supported in the build. |
+| Structured build | Gradle allows you to apply common design principles to your build. It will give you a perfect structure for build, so that, you can design well-structured and easily maintained, comprehensible build. |
+| Deep API | By using this API, you can monitor and customise its configuration and execution behavior to the core. |
+| Gradle scales | Gradle can easily increase the productivity, from simple and single project builds to huge enterprise multi-project builds. |
+| Multi-project builds | Gradle supports the multi-project builds and partial builds. If you build a subproject, Gradle takes care of building all the subprojects, that the subproject depends on. |
+| Different ways to manage your builds | Gradle supports different strategies to manage your dependencies. |
+| Gradle is the first build integration tool | Gradle is fully supported for your ANT tasks, Maven and lvy repository infrastructure for publishing and retrieving dependencies. It also provides a converter for turning a Maven pom.xml to Gradle script. |
+| Ease of migration | Gradle can easily adapt to any structure. Therefore, you can always develop your Gradle build in the same branch, where you can build live script. |
+| Gradle Wrapper | Gradle Wrapper allows you to execute the Gradle builds on machines, where Gradle is not installed. This is useful for continuous integration of servers. |
+| Free open source | Gradle is an open source project, and licensed under the Apache Software License (ASL). |
+| Groovy | Gradle's build script are written in Groovy programming language. The whole design of Gradle is oriented towards being used as a language and not as a rigid framework. Groovy allows you to write your own script with some abstractions. The whole Gradle API is fully designed in Groovy language. |
+
+
+With these features from gradle, it is able to solve most of the conflict on maven and ant tool. 
+
+[Reference](https://www.jrebel.com/blog/comparison-of-gradle-maven-and-ant)
+
+
+### Gradle Wrapper
+Gradle Wrapper is script that allows you to run a Gradle build even if you don’t have Gradle installed. 
+It downloads Gradle as a shell and batch scripts, and provides Gradle functionality as if you had it installed, without actually installing it. 
+That way you don’t have to worry if other developers have Gradle installed on their local machines and what version.
+This is useful for continuous integration of servers.
+
+Heres how you could do it:
+First, open `build.gradle` and add `wrapper` like shown below: 
+```
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.4'
+}
+```
+Once that is done, run `gradle wrapper` task to download and cache the Gradle binaries, and initialize the wrapper scripts:
+```
+project_root
+└── gradlew
+└── gradlew.bat
+└── gradle
+    └── wrapper
+        └── gradle-wrapper.jar
+        └── gradle-wrapper.properties
+```
+Now wrapper scripts can be used.
+`gradlew` for linux 
+`gradlew.bat` for windows
+With this, there is no need to go through gradle installation. 
+These scripts are meant to be included in thx version control so that anyone can use them for the build.
+To execute build task using wrapper just run:
+```
+./gradlew build
+```
+
+#### How do I add the Gradle wrapper to an existing project?
+- This is useful if you have a project which doesn’t have a wrapper. Navigate to the project directory and run `gradle wrapper`
+
+#### How do I execute a Gradle build using the wrapper?
+That’s precisely what `gradlew` / `gradlew.bat` are for. 
+When you run these scripts a Gradle build will start using the configured version of Gradle.
+This is what you will see on **Linux**:
+```
+$ ./gradlew
+
+> Task :help
+
+Welcome to Gradle 6.9.
+
+To run a build, run gradlew <task> ...
+
+To see a list of available tasks, run gradlew tasks
+
+To see a list of command-line options, run gradlew --help
+
+To see more detail about a task, run gradlew help --task <task>
+
+For troubleshooting, visit https://help.gradle.org
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.9/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 548ms
+1 actionable task: 1 executed
+```
+And Here is what you see on **Windows**: 
+```
+c:\workspace\wrapper-test>gradlew.bat
+
+> Task :help
+
+Welcome to Gradle 6.9.
+
+To run a build, run gradlew <task> ...
+
+To see a list of available tasks, run gradlew tasks
+
+To see a list of command-line options, run gradlew --help
+
+To see more detail about a task, run gradlew help --task <task>
+
+For troubleshooting, visit https://help.gradle.org
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.9/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 1s
+1 actionable task: 1 executed
+```
+By default, if you don’t pass a task name to the Gradle wrapper script, the help task is executed. 
+You can pass a task name using the format `./gradlew <task-name>`.
+
+To view more information on what kind of task gradle can build for you, key in `./gradlew tasks` to find out:
+```
+$ ./gradlew tasks
+
+> Task :tasks
+
+------------------------------------------------------------
+Tasks runnable from root project 'wrapper-test'
+------------------------------------------------------------
+
+Build Setup tasks
+-----------------
+init - Initializes a new Gradle build.
+wrapper - Generates Gradle wrapper files.
+
+Help tasks
+----------
+buildEnvironment - Displays all buildscript dependencies declared in root project 'wrapper-test'.
+dependencies - Displays all dependencies declared in root project 'wrapper-test'.
+dependencyInsight - Displays the insight into a specific dependency in root project 'wrapper-test'.
+help - Displays a help message.
+javaToolchains - Displays the detected java toolchains. [incubating]
+outgoingVariants - Displays the outgoing variants of root project 'wrapper-test'.
+projects - Displays the sub-projects of root project 'wrapper-test'.
+properties - Displays the properties of root project 'wrapper-test'.
+tasks - Displays the tasks runnable from root project 'wrapper-test'.
+
+To see all tasks and more detail, run gradlew tasks --all
+
+To see more detail about a task, run gradlew help --task <task>
+
+BUILD SUCCESSFUL in 464ms
+1 actionable task: 1 executed
+```
+[Reference](https://tomgregory.com/what-is-the-gradle-wrapper-and-why-should-you-use-it/)
+
