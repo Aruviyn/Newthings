@@ -416,6 +416,7 @@ NPM, Inc. is a company founded in 2014, and was acquired by GitHub in 2020. npm 
 
 The command line tool `npm` is a package management solution for Javascript-based development. It is used to create and use node packaged modules and is built into the Javascript platform [Node.js](https://nodejs.org/en/)
 
+you can see NPM version by this command `npm --version`
 Let's dive more into NPM.
 
 
@@ -429,8 +430,8 @@ A default blob store that is based on a file system storage within the `$data-di
 
 
 #### Blob Stores
-A blob store is the internal storage mechanism for the binary parts of components and their assets. 
-They can be local file system or cloud-based using Amazon S3 (Pro and OSS) or Microsoft Azure (Pro only). 
+A blob store is the internal storage mechanism for the binary parts of components and their assets.
+They can be local file system or cloud-based using Amazon S3 (Pro and OSS) or Microsoft Azure (Pro only).
 Each blob store can be used by one or multiple repositories and repository groups.
 
 There are two things to know about NPM repository.
@@ -442,28 +443,28 @@ There are three types of registries on NPM.
 
 
 #### Proxying NPM Registries.
-This is a repository that is linked to a remote repository. 
-Any request for a component is verified against the local content of the proxy repository. 
+This is a repository that is linked to a remote repository.
+Any request for a component is verified against the local content of the proxy repository.
 
-If no local component is found, the request is forwarded to the remote repository. 
+If no local component is found, the request is forwarded to the remote repository.
 
-The component is then retrieved and stored locally in the repository manager, which acts as a cache. 
+The component is then retrieved and stored locally in the repository manager, which acts as a cache.
 Subsequent requests for the same component are then fulfilled from the local storage, therefore eliminating the network bandwidth and time overhead of retrieving the component from the remote repository again.
 
 There are few default npm access registry:
 
-1.  By default npm accesses https://registry.npmjs.org registry directly. 
+1.  By default npm accesses https://registry.npmjs.org registry directly.
     This is to reduce duplicate downloads and improve download speeds for your developers and CI servers.
     To proxy an external npm registry, you simply create a new npm (proxy) as documented in Repository Management.
-    Here is how: 
+    Here is how:
     - Define Name  
     - Define URL for the remote storage
-    - Select Blob store for storage. 
+    - Select Blob store for storage.
 
 
 #### Private NPM Registries.
-A private npm registry can be used to upload your own packages as well as third-party packages. 
-We can create a private npm registry by setting up a hosted repository with the npm format in the repository manager. 
+A private npm registry can be used to upload your own packages as well as third-party packages.
+We can create a private npm registry by setting up a hosted repository with the npm format in the repository manager.
 It is good practice to create two separate hosted repositories for these purposes.
 A hosted repository, is a repository that stores components in the repository manager as the authoritative location for these components.
 
@@ -473,11 +474,11 @@ To create a hosted repository with npm format, simply create a new npm (hosted):
 
 
 #### Grouping npm Registries
-A repository with the type group, also known as repository group, represents a powerful feature of Nexus Repository Manager. 
-They allow you to combine multiple repositories and other repository groups in a single repository. 
+A repository with the type group, also known as repository group, represents a powerful feature of Nexus Repository Manager.
+They allow you to combine multiple repositories and other repository groups in a single repository.
 This in turn means that your users can rely on a single URL for their configuration needs, while the administrators can add more repositories and therefore components to the repository group.
 
-To create a new repository group: 
+To create a new repository group:
 -   Define Name
 -   Select Blob store for storage
 -   Add npm repositories to the Members list in the desired order
@@ -489,10 +490,10 @@ To create a new repository group:
 ## Gradle
 Gradle is a build system (open source) which is used to automate building, testing, deployment etc.
 The process becomes more consistent with the help of build automation tools.
-The building process includes compiling, linking, and packaging the code. 
+The building process includes compiling, linking, and packaging the code.
 It builds up on ANT, Maven and lvy repositories and supports groovy based Domain Specific Language (DSL) over the XML.
 
-Every Android project needs a gradle for generating an apk from the .java and .xml files in the project. 
+Every Android project needs a gradle for generating an apk from the .java and .xml files in the project.
 Simply put, a gradle takes all the source files (java and XML) and apply appropriate tools.
 For example, it converts the java files into dex files and compresses all of them into a single file known as apk that is actually used.
 
@@ -501,17 +502,17 @@ Now you have a rough idea about gradle, lets look into it deeper.
 [Reference](https://www.geeksforgeeks.org/android-build-gradle/)
 
 ### How does gradle works?
-Gradle builds are used to define a project and its tasks. 
-At least one Gradle build file is located in the root folder of the project. 
-A task represents the work that a Gradle build has to perform, for example, compiling the source code of the program. 
-You can execute multiple tasks at a time under one build file. 
+Gradle builds are used to define a project and its tasks.
+At least one Gradle build file is located in the root folder of the project.
+A task represents the work that a Gradle build has to perform, for example, compiling the source code of the program.
+You can execute multiple tasks at a time under one build file.
 These tasks can be dynamically created and extended at runtime.
 
 
 ### Why do people use gradle?
 Below are the reasons why people use gradle:
 - Gradle resolves all the issues faced on other build tools like Maven and ANT.
-- The tool focuses on maintainability, usability, extendibility, performance, and flexibility. 
+- The tool focuses on maintainability, usability, extendibility, performance, and flexibility.
 - Gradle is popular to provide high-speed performance, nearly twice as fast as Maven. It is well-known to be highly customizable when it comes to different projects dealing with various technologies. We may use Gradle in several ways, like Java projects, Android projects, and Groovy projects.
 - The tools support a wide variety of IDE's, which provide a better user experience, as different people prefer working on a different IDE. It provides the users that like to work on the terminal with the command-line interface, which offers features like Gradle tasks, Command line completion, etc.
 
@@ -525,11 +526,11 @@ However, Both Ant and Maven has their drawbacks:
 | Tool | Drawbacks |
 | --- | --- |
 | Ant |  XML is used as a format to write the build scripts. Being hierarchical is not good for procedural programming. XML is relatively unmanageable |
-| Maven | It does not handle the conflicts between versions of the same library. Complex customised build scripts are difficult to write in Maven, as compared to writing the build scripts in **ANT** | 
+| Maven | It does not handle the conflicts between versions of the same library. Complex customised build scripts are difficult to write in Maven, as compared to writing the build scripts in **ANT** |
 
 
-Gradle then came in with efficient features from both tools: 
-| Features | Description | 
+Gradle then came in with efficient features from both tools:
+| Features | Description |
 | --- | --- |
 | Declarative builds and build-by-convention | Gradle is available with separate Domain Specific Language (DSL) based on Groovy language. It provides the declarative language elements. Those elements also provide build-by-convention support for Java, Groovy, OSGI, Web and Scala. |
 | Language for dependency based programming | The declarative language lies on a top of a general purpose task graph, which can be fully supported in the build. |
@@ -545,19 +546,19 @@ Gradle then came in with efficient features from both tools:
 | Groovy | Gradle's build script are written in Groovy programming language. The whole design of Gradle is oriented towards being used as a language and not as a rigid framework. Groovy allows you to write your own script with some abstractions. The whole Gradle API is fully designed in Groovy language. |
 
 
-With these features from gradle, it is able to solve most of the conflict on maven and ant tool. 
+With these features from gradle, it is able to solve most of the conflict on maven and ant tool.
 
 [Reference](https://www.jrebel.com/blog/comparison-of-gradle-maven-and-ant)
 
 
 ### Gradle Wrapper
-Gradle Wrapper is script that allows you to run a Gradle build even if you don’t have Gradle installed. 
-It downloads Gradle as a shell and batch scripts, and provides Gradle functionality as if you had it installed, without actually installing it. 
+Gradle Wrapper is script that allows you to run a Gradle build even if you don’t have Gradle installed.
+It downloads Gradle as a shell and batch scripts, and provides Gradle functionality as if you had it installed, without actually installing it.
 That way you don’t have to worry if other developers have Gradle installed on their local machines and what version.
 This is useful for continuous integration of servers.
 
 Heres how you could do it:
-First, open `build.gradle` and add `wrapper` like shown below: 
+First, open `build.gradle` and add `wrapper` like shown below:
 ```
 task wrapper(type: Wrapper) {
     gradleVersion = '1.4'
@@ -574,9 +575,9 @@ project_root
         └── gradle-wrapper.properties
 ```
 Now wrapper scripts can be used.
-`gradlew` for linux 
+`gradlew` for linux
 `gradlew.bat` for windows
-With this, there is no need to go through gradle installation. 
+With this, there is no need to go through gradle installation.
 These scripts are meant to be included in thx version control so that anyone can use them for the build.
 To execute build task using wrapper just run:
 ```
@@ -587,7 +588,7 @@ To execute build task using wrapper just run:
 - This is useful if you have a project which doesn’t have a wrapper. Navigate to the project directory and run `gradle wrapper`
 
 #### How do I execute a Gradle build using the wrapper?
-That’s precisely what `gradlew` / `gradlew.bat` are for. 
+That’s precisely what `gradlew` / `gradlew.bat` are for.
 When you run these scripts a Gradle build will start using the configured version of Gradle.
 This is what you will see on **Linux**:
 ```
@@ -614,7 +615,7 @@ See https://docs.gradle.org/6.9/userguide/command_line_interface.html#sec:comman
 BUILD SUCCESSFUL in 548ms
 1 actionable task: 1 executed
 ```
-And Here is what you see on **Windows**: 
+And Here is what you see on **Windows**:
 ```
 c:\workspace\wrapper-test>gradlew.bat
 
@@ -639,7 +640,7 @@ See https://docs.gradle.org/6.9/userguide/command_line_interface.html#sec:comman
 BUILD SUCCESSFUL in 1s
 1 actionable task: 1 executed
 ```
-By default, if you don’t pass a task name to the Gradle wrapper script, the help task is executed. 
+By default, if you don’t pass a task name to the Gradle wrapper script, the help task is executed.
 You can pass a task name using the format `./gradlew <task-name>`.
 
 To view more information on what kind of task gradle can build for you, key in `./gradlew tasks` to find out:
@@ -677,4 +678,3 @@ BUILD SUCCESSFUL in 464ms
 1 actionable task: 1 executed
 ```
 [Reference](https://tomgregory.com/what-is-the-gradle-wrapper-and-why-should-you-use-it/)
-
