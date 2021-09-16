@@ -44,7 +44,7 @@ Sample output of the gradle task:
 Browse to http://localhost:8080/swagger-ui.html to view Swagger-UI
 
 # Reference:
-https://spring.io/guides/gs/spring-boot/
-https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
-https://www.tutorialspoint.com/spring_boot/spring_boot_enabling_swagger2.htm
-https://start.spring.io/
+- https://spring.io/guides/gs/spring-boot/
+- https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+- https://www.tutorialspoint.com/spring_boot/spring_boot_enabling_swagger2.htm
+- https://start.spring.io/
