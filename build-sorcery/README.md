@@ -486,7 +486,7 @@ To create a new repository group:
 #### Modules in Node and How does it work
 Module in node is a simple/complex functionality organized in single/multiple JavaScript files that can be reused inside node application
 
-Node implements modules standard which refers to a group of volunteers that define JS standards fro web servers, desktop and console application
+Node implements modules standard which refers to a group of volunteers that define JS standards for web servers, desktop and console application
 
 Three type of modules are:
 
@@ -504,6 +504,26 @@ Here is how you use Node/NPM modules:
 | Core Modules | you need to import using `require()` keyword: `var module = require ('module_name')` the require function will return object, function, property depending on the specified module|
 | Local Modules | To use local modules in your node application, you have to load using `require` function same as core module. However, you have to specify the path of JS file of the module. Example: `var LocalModule = require('./Log.js');` |
 | Export Modules | since `exports` is an object, it exposes whatever you assigned to it as a module. Example: in message.js, `module.exports = 'Hello Malaysia';`, now, import this message module and use it: in app.js, `var test = require('.Message.js'); console.log(test);`. It will give 'Hello Malaysia' as the output |
+
+#### NPM dependencies
+NPM package dependencies were listed under a dependencies key in the `package.json` file. Dependencies value is used to specify any other modules that a given module - represented by the package.json requires to work.
+
+Hence,
+When `npm install` is run from the root folder of any given module, it will install any modules listed in that dependecy . Note that `npm install <package-name>` is a method to add dependencies in your node project
+
+Example:
+`mdx-deck` is the dependency in node project below
+```
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "testNodeJS",
+  "author": "wawaSM",
+  "dependencies": {
+    "mdx-deck": "^4.1.1"
+  }
+}
+```
 
 
 ### Package.Json
