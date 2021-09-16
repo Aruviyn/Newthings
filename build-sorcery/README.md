@@ -483,6 +483,28 @@ To create a new repository group:
 -   Select Blob store for storage
 -   Add npm repositories to the Members list in the desired order
 
+#### Modules in Node and How does it work
+Module in node is a simple/complex functionality organized in single/multiple JavaScript files that can be reused inside node application
+
+Node implements modules standard which refers to a group of volunteers that define JS standards fro web servers, desktop and console application
+
+Three type of modules are:
+
+| Modules| Description |
+| --- | --- |
+| Core Modules | Include minimum functionalities of Node. These modules are complied into binary distribution and loads when node process starts. However, before you actually can utilize any of the modules, you have to `import` these modules in node controllers. Example: http, fs, url |
+| Local Modules | Modules that were created locally in Node application. These modules include different functionalities of your application in seprate files/folders. Example: if you need to connect to redisDB and fetch data, you can create a module for that purpose and is reusable in your application |
+| Export Modules | The `module.exports` is a special object which is included in every JS file in node application by default. The module is a variable that represents the current module. SO whatever you assign to `module.exports` will be exposed as module  |
+
+
+
+Here is how you use Node/NPM modules:
+| Modules| How to use |
+| --- | --- |
+| Core Modules | you need to import using `require()` keyword: `var module = require ('module_name')` the require function will return object, function, property depending on the specified module|
+| Local Modules | To use local modules in your node application, you have to load using `require` function same as core module. However, you have to specify the path of JS file of the module. Example: `var LocalModule = require('./Log.js');` |
+| Export Modules | since `exports` is an object, it exposes whatever you assigned to it as a module. Example: in message.js, `module.exports = 'Hello Malaysia';`, now, import this message module and use it: in app.js, `var test = require('.Message.js'); console.log(test);`. It will give 'Hello Malaysia' as the output |
+
 
 ### Package.Json
 
