@@ -1,0 +1,14 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+../.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Ignore eclipse files
+project/.project
+project/.settings/
+project/api/StatisticAPI/.classpath
+project/api/StatisticAPI/.gitignore
+project/api/StatisticAPI/.project
+project/api/StatisticAPI/.settings/
