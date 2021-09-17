@@ -49,3 +49,9 @@ jobs:
           build-root-directory: project
           # Gradle command line arguments, see gradle --help
           arguments: build
+
+      - name: Archive artifact
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: project/api/Server/build/libs/*.jar
