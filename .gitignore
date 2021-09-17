@@ -12,3 +12,6 @@ project/api/StatisticAPI/.classpath
 project/api/StatisticAPI/.gitignore
 project/api/StatisticAPI/.project
 project/api/StatisticAPI/.settings/
+project/api/Server/.classpath
+project/api/Server/.project
+project/api/Server/.settings/
