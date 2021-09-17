@@ -55,3 +55,19 @@ jobs:
         with:
           name: swagger-ui-executable-jar
           path: project/api/Server/build/libs/*.jar
+
+  server-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Gradle Generate Javadoc
+        uses: gradle/gradle-build-action@v2.0-beta.1
+        with:
+          build-root-directory: project/api/Server
+          arguments: clean javadoc
+
+      - name: Archive javadoc
+        uses: actions/upload-artifact@v2
+        with:
+          name: server-javadoc
+          path: project/api/Server/build/docs/javadoc/
