@@ -1,0 +1,26 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+application {
+    mainClass = 'com.aruviyn.project.api.App'
+}
+
+group = 'com.aruviyn.project.api'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testImplementation 'junit:junit:3.8.1'
+  testImplementation('org.junit.jupiter:junit-jupiter')
+  testImplementation(platform("org.junit:junit-bom:5.8.0"))
+}
+
+test {
+  useJUnitPlatform()
+}
