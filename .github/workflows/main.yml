@@ -53,5 +53,5 @@ jobs:
       - name: Archive artifact
         uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: swagger-ui-executable-jar
           path: project/api/Server/build/libs/*.jar
