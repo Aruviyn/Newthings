@@ -1,0 +1,30 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+application {
+    mainClass = 'com.aruviyn.project.lingo.App'
+}
+
+group = 'com.aruviyn.project.lingo'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+  implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
+  // https://mvnrepository.com/artifact/org.json/json
+  implementation 'org.json:json:20210307'
+  testImplementation 'junit:junit:3.8.1'
+  testImplementation('org.junit.jupiter:junit-jupiter')
+  testImplementation(platform("org.junit:junit-bom:5.8.0"))
+}
+
+test {
+  useJUnitPlatform()
+}
