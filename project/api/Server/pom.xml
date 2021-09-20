@@ -62,5 +62,10 @@
 			<version>2.6.1</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.aruviyn.project.lingo</groupId>
+			<artifactId>WordUse</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
