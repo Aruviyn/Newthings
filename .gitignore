@@ -15,3 +15,6 @@ project/api/StatisticAPI/.settings/
 project/api/Server/.classpath
 project/api/Server/.project
 project/api/Server/.settings/
+project/api/WordUse/.project
+project/api/WordUse/.settings
+project/api/WordUse/.classpath

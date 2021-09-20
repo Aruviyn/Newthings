@@ -24,10 +24,7 @@ public class SwaggerConfig {
 	}
 
 	private Predicate<String> postPaths() {
-		/* enable this when having more than one paths 
-		return or(regex("/echo/.*"), regex("/conversion/.*"));
-		*/
-		return (regex("/echo/.*"));
+		return or(regex("/echo/.*"), regex("/howto/.*"));
 	}
 
 	private ApiInfo apiInfo() {
