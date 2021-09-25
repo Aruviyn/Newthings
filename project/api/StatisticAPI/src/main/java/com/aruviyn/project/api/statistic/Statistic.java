@@ -1,20 +1,37 @@
-/* Mean Function */
-import java.util.Scanner;
-class Mean 
-{
-   public static void main(String args[]) 
-    { 
-	Scanner sc=new Scanner(System.in);
-	System.out.println("Please enter the amount of number you wish to input: "); 
-	int n=sc.nextInt();
-	double[] input=new double[n];
-	System.out.println("Please Enter the numbers: ");
-	double sum=0;
-	for(int i=0;i<n;i++) 
-	{
-		input[i]=sc.nextDouble();
-		sum=sum+input[i];
+package com.aruviyn.project.api.statistic;
+
+import java.util.Arrays;
+
+class Statistic {
+	public Statistic() {
+		
 	}
-       System.out.println("Mean :"+sum/n);  
-   }
+	
+	public double mean(double[] inputs) {
+		double mean = 0;
+		
+		try {
+			double sum = 0;
+			for(double input:inputs) {
+				sum = sum + input;
+			}
+			mean = sum/inputs.length;
+		}catch(ArithmeticException arithEx) {
+			arithEx.printStackTrace();
+		}catch(IndexOutOfBoundsException indexEx) {
+			indexEx.printStackTrace();
+		}
+		
+		return mean;
+	}
+	
+	public double mean(String[] args) {
+		double[] inputs = Arrays.stream(args).mapToDouble(Double::parseDouble).toArray();
+		return mean(inputs);
+	}
+
+	public static void main(String args[]) {
+		Statistic statistic = new Statistic();
+		System.out.println("Mean: "+statistic.mean(args));
+	}
 }
