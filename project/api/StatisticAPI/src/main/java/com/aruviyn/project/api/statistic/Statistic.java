@@ -3,7 +3,7 @@ package com.aruviyn.project.api.statistic;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-class Statistic {
+public class Statistic {
 	public Statistic() {
 		
 	}
