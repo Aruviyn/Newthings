@@ -20,6 +20,7 @@ dependencies {
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'junit:junit:3.8.1'
   implementation project(':api:WordUse')
+  implementation project(':api:StatisticAPI')
 }
 
 test {
