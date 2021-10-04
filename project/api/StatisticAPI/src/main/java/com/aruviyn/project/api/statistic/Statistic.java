@@ -31,6 +31,7 @@ public class Statistic {
 		return mean(inputs);
 	}
 	
+	
 	public class NumberAndOccurence{
 		private double value;
 		private int occurence;
@@ -53,9 +54,26 @@ public class Statistic {
 			this.occurence = occurence;
 		}
 		
-		
 	}
-	
+
+	public double median(String[] args) {
+		double[] inputs = Arrays.stream(args).mapToDouble(Double::parseDouble).toArray();
+		return median(inputs);
+	}
+
+	public double median(double[] inputs) {
+		double mid = 0;
+		Arrays.sort(inputs);
+		double odd = inputs[inputs.length/2];
+		double even = (inputs[inputs.length/2] + inputs[(inputs.length/2)-1])/2;
+		if(inputs.length%2!=0) {
+			mid = odd;
+		}else {
+			mid = even;
+		}
+		return mid;
+	}
+
 	//input could be 1,3,3,4,4,6
 	public LinkedList<Double> mode(double[] inputs) {
 		LinkedList<Double> modResult = new LinkedList<Double>();
@@ -123,6 +141,6 @@ public class Statistic {
 	public static void main(String args[]) {
 		Statistic statistic = new Statistic();
 		//System.out.println("Mean: "+statistic.mean(args));
-		System.out.println("Mode: "+statistic.mode(args).toString());
+		System.out.println("Median: "+statistic.median(args));
 	}
 }

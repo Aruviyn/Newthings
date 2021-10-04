@@ -37,4 +37,16 @@ public class StatisticController {
 		
 		return response;
 	}
+	
+	@RequestMapping(
+			value = "/api/median",
+			params = "input",
+			method = RequestMethod.GET)
+	public String median(@RequestParam String input) {
+		String response = "";
+		
+		Statistic statistic = new Statistic();
+		response = ""+statistic.median(input.split(" "));
+		return response;
+	}
 }
