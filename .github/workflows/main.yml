@@ -38,6 +38,16 @@ jobs:
           # Gradle command line arguments, see gradle --help
           arguments: build
 
+      - name: Purge artifacts
+      # You may pin to the exact commit or the version.
+      # uses: kolpav/purge-artifacts-action@04c636a505f26ebc82f8d070b202fb87ff572b10
+        uses: kolpav/purge-artifacts-action@v1
+        with:
+          # Human readable expire duration
+          expire-in: 7days
+          # Github auth token
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Archive artifact
         uses: actions/upload-artifact@v2
         with:
