@@ -9,6 +9,11 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.LinkedList;
 
+/**
+ * This class is an extension of the APIFetcher class where it fetches data from api.dictionaryapi.dev via API call
+ * @author fazreil
+ *
+ */
 public class DictionaryAPIFetcher
     extends APIFetcher
 {
@@ -17,6 +22,11 @@ public class DictionaryAPIFetcher
         super( sourceUrl );
     }
 
+    /**
+     * This function processes the response and filter out unnecessary information so that we just end up with the usage of the word requested.
+     * @param originalString This is the original string from the fetch function.
+     * @author fazreil
+     */
     public String processResponse( String originalString )
     {
         String processedString = "";
@@ -57,6 +67,11 @@ public class DictionaryAPIFetcher
         return processedString;
     }
 
+    /**
+     * This function processes the each of the definition and give us a list of examples
+     * @param definitions an array of definitions in JSON obtained from fetch()'s Response
+     * @return A list of example of how to use the word in a string datatype.
+     */
     private LinkedList<String> processDefinitions( JSONArray definitions )
     {
         LinkedList<String> exampleOfThisDefinitionList = new LinkedList<String>(  );
@@ -76,6 +91,11 @@ public class DictionaryAPIFetcher
         return exampleOfThisDefinitionList;
     }
 
+    /**
+     * This function transform the list of examples into a String representation. It prepares the list of the examples and turn them into readable list of how to use the word.
+     * @param examples
+     * @return A string respresentation of the usage of the word
+     */
     private String transformExamplesListIntoString( LinkedList<String> examples )
     {
         String returnString = "";
@@ -88,6 +108,11 @@ public class DictionaryAPIFetcher
         return returnString;
     }
 
+    /**
+     * This function decides what string to append to the output depending on the length of the examples list
+     * @param examples the list of examples in String
+     * @return either "are some" or "is an" string to decorate the program output.
+     */
     private String plurality( LinkedList<String> examples )
     {
         if ( examples.size(  ) > 1 )
