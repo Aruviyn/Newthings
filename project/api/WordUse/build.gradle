@@ -1,6 +1,7 @@
 plugins {
     id 'application'
     id 'java'
+    id("gradle.site").version("0.6")
 }
 
 application {
@@ -23,6 +24,11 @@ dependencies {
   testImplementation 'junit:junit:3.8.1'
   testImplementation('org.junit.jupiter:junit-jupiter')
   testImplementation(platform("org.junit:junit-bom:5.8.0"))
+}
+
+site {
+    outputDir.set(file("$rootDir/docs"))
+    vcsUrl.set("https://github.com/fazreil/Newthings")
 }
 
 test {
