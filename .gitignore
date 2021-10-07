@@ -21,3 +21,5 @@ project/api/WordUse/.classpath
 
 # Ignore generated documentation
 project/docs/
+project/api/.project
+project/api/.settings/org.eclipse.m2e.core.prefs
