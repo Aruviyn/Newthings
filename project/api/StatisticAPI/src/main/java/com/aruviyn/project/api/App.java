@@ -1,11 +1,16 @@
 package com.aruviyn.project.api;
 
 /**
- * Hello world!
+ * 
+ * @author Aruviyn
  *
  */
 public class App 
 {
+	/**
+	 * 
+	 * @param args
+	 */
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
