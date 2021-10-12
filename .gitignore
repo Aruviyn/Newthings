@@ -18,3 +18,8 @@ project/api/Server/.settings/
 project/api/WordUse/.project
 project/api/WordUse/.settings
 project/api/WordUse/.classpath
+
+# Ignore generated documentation
+project/docs/
+project/api/.project
+project/api/.settings/org.eclipse.m2e.core.prefs
