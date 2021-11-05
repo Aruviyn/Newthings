@@ -1,0 +1,13 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.aruviyn.project</groupId>
+  <artifactId>InternshipProject</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>Internship Project</name>
+  <packaging>pom</packaging>
+  <modules>
+    <module>WordUse</module>
+    <module>Server</module>
+    <module>StatisticAPI</module>
+  </modules>
+</project>

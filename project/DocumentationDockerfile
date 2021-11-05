@@ -1,0 +1,2 @@
+from httpd:latest
+COPY api/StatisticAPI/build/docs/javadoc/ /usr/local/apache2/htdocs
