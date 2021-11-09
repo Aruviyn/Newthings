@@ -33,5 +33,5 @@ site {
 }
 
 test {
-  useJUnitPlatform()
+  useJUnit()
 }
