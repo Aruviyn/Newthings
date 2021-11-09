@@ -3,19 +3,7 @@
 name: CI
 
 # Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches:
-      - develop
-      - CI
-  pull_request:
-    branches:
-      - develop
-      - CI
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on: [push, pull_request, workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -49,3 +37,35 @@ jobs:
           build-root-directory: project
           # Gradle command line arguments, see gradle --help
           arguments: build
+
+      - name: Purge artifacts
+      # You may pin to the exact commit or the version.
+      # uses: kolpav/purge-artifacts-action@04c636a505f26ebc82f8d070b202fb87ff572b10
+        uses: kolpav/purge-artifacts-action@v1
+        with:
+          # Human readable expire duration
+          expire-in: 7days
+          # Github auth token
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Archive artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: swagger-ui-executable-jar
+          path: project/api/Server/build/libs/*.jar
+
+  server-documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Gradle Generate Javadoc
+        uses: gradle/gradle-build-action@v2.0-beta.1
+        with:
+          build-root-directory: project
+          arguments: :api:Server:clean :api:Server:javadoc
+
+      - name: Archive javadoc
+        uses: actions/upload-artifact@v2
+        with:
+          name: server-javadoc
+          path: project/api/Server/build/docs/javadoc/

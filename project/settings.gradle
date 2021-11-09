@@ -10,3 +10,5 @@
 rootProject.name = 'API'
 include 'api:StatisticAPI'
 include 'api:Server'
+include 'api:WordUse'
+include 'api'
