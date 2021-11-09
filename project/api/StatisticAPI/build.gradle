@@ -16,11 +16,11 @@ repositories {
 }
 
 dependencies {
-  testImplementation 'junit:junit:3.8.1'
+  testImplementation 'junit:junit:4.12'
   testImplementation('org.junit.jupiter:junit-jupiter')
   testImplementation(platform("org.junit:junit-bom:5.8.0"))
 }
 
 test {
-  useJUnitPlatform()
+  useJUnit()
 }
