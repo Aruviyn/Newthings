@@ -41,9 +41,6 @@ The sum of 5 and 11 is 16
 - First open the terminal and install the package by typing: sudo pacman -S screenfetch
 - Proceed by inserting password and screenFetch will be installed. 
 - Lastly, to display system information, type: screenfetch
-##
-## Nodejs.
-- Node js is commonly used for non-blocking, event-driven servers, because of its single-threaded nature. mainly used on traditional web sites and back-end API.
 
 ##
 ## Atom ide.
